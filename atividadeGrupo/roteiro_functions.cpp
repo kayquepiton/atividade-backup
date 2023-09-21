@@ -203,3 +203,48 @@ void localizaRoteiro(vector<Roteiro> &roteiros)
 
     cout << "Roteiro nao encontrado!" << endl;
 }
+
+void menuRoteiro(vector<Roteiro> &roteiros){
+    
+
+    cout << endl
+    << "==== Gestão de Roteiros ==== " << endl <<"Serviços disponíveis:" << endl;
+    cout << "1. Incluir " << endl;
+    cout << "2. Excluir" << endl;
+    cout << "3. Alterar (apenas por código)" << endl;
+    cout << "4. Listar" << endl;
+    cout << "5. Localizar (apenas por código)" << endl;
+    cout << "0. Sair." << endl;
+    cout << "Escolha uma opção: ";
+
+    int opcao;
+    cin >> opcao;
+
+    switch (opcao){
+
+        case 1:
+            criaRoteiro(roteiros);
+            break;
+        case 2:
+            excluirRoteiro(roteiros);
+            break;
+        case 3:
+            alteraRoteiro(roteiros);
+            break;
+        case 4:
+            listaRoteiro(roteiros);
+            break;
+        case 5:
+            localizaRoteiro(roteiros);
+            break;
+        case 0:
+            cout << "Programa finalizado!" << endl;
+            return;
+        break;
+
+        default:
+            cout << "Digite um valor válido!" << endl;
+        break;
+    }
+    
+}

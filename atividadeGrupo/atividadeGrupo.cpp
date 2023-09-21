@@ -12,11 +12,14 @@ using namespace std;
 int main()
 {
     vector<Passageiro> listaPassageiros;
+    vector<Roteiro> listaRoteiros;
     
 
     while (true)
     {
         menuPassageiro(listaPassageiros);
+
+        menuRoteiro(listaRoteiros);
 
     }
 
