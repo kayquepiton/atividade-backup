@@ -51,7 +51,7 @@ void criaPassageiro(vector<Passageiro> &passageiros)
     regex cpfValido(R"(\d{3}\.\d{3}\.\d{3}-\d{2})"),
         dataValida("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$");
 
-    cout << "\nInforme o CPF do passageiro a ser incluído (xxx.xxx.xxx-xx): ";
+    cout << "Informe o CPF do passageiro a ser cadastrado (xxx.xxx.xxx-xx): ";
     cin >> passageiro.cpf;
 
     while (true)
@@ -134,7 +134,7 @@ void excluirPassageiro(vector<Passageiro> &passageiros)
         }
     }
 
-    cout << "Passageiro não encontrado." << endl;
+    cout << "\nPassageiro não encontrado." << endl;
 }
 
 void alteraPassageiro(vector<Passageiro> &passageiros)
@@ -162,9 +162,9 @@ void alteraPassageiro(vector<Passageiro> &passageiros)
             cout << "Deseja modificar o nome? (s/n): ";
             cin >> decisao;
 
-            if (decisao == 's')
+            if (decisao == 's' || decisao == 'S')
             {
-                cout << "Novo Nome: ";
+                cout << "Insira o novo Nome: ";
                 cin.ignore();
                 getline(cin, it.nome);
             }
@@ -172,10 +172,10 @@ void alteraPassageiro(vector<Passageiro> &passageiros)
             cout << "Deseja modificar a data de nascimento? (s/n): ";
             cin >> decisao;
 
-            if (decisao == 's')
+            if (decisao == 's' || decisao == 'S')
             {
                 string dataAux = it.dataNascimento;
-                cout << "Nova Data de Nascimento: ";
+                cout << "Insira a nova Data de Nascimento: ";
                 cin >> it.dataNascimento;
 
                 if(calcularIdade(dataAux) >= 18 && calcularIdade(it.dataNascimento) < 18) {
@@ -197,9 +197,9 @@ void alteraPassageiro(vector<Passageiro> &passageiros)
                 cout << "Deseja mudar o numero de autorizacao? (s/n): ";
                 cin >> decisao;
 
-                if (decisao == 's')
+                if (decisao == 's' || decisao == 'S')
                 {
-                    cout << "Novo Número de Autorizacao: ";
+                    cout << "Insira o novo Número de Autorizacao: ";
                     cin >> it.numAutorizacao;
 
                     for (Passageiro &itAutorizacao : passageiros)
@@ -283,7 +283,7 @@ void menuPassageiro(vector<Passageiro> &passageiros)
     cout << "3. Alterar passageiro (por CPF)" << endl;
     cout << "4. Listar passageiros" << endl;
     cout << "5. Localizar passageiro (por CPF)" << endl;
-    cout << "0. Sair" << endl;
+    cout << "0. Voltar ao Menu Principal" << endl;
     cout << "Escolha uma opção: ";
 
     int opt;
@@ -307,7 +307,7 @@ void menuPassageiro(vector<Passageiro> &passageiros)
             localizaPassageiro(passageiros);
             break;
         case 0:
-            cout << "Programa finalizado!" << endl;
+            cout << "Voltando ao Menu Principal" << endl;
             return;
         default:
             cout << "Digite um valor válido!" << endl;
