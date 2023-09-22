@@ -27,12 +27,12 @@ void criaRoteiro(vector<Roteiro> &roteiros)
     {
         if (it.codigo == roteiro.codigo)
         {
-            cout << "Codigo ja cadastrado!" << endl;
+            cout << "Código já cadastrado!" << endl;
             return;
         }
     }
 
-    cout << "Informe a Data e Hora Prevista (formato dd/mm/aaaa hh:mm): ";
+    cout << "Informe a data e hora prevista (formato dd/mm/aaaa hh:mm): ";
     cin.ignore();
     getline(cin, roteiro.dataHoraPrevista);
 
@@ -44,12 +44,12 @@ void criaRoteiro(vector<Roteiro> &roteiros)
         }
         else
         {
-            cout << "Data ou hora invalida (dd/mm/aaaa hh:mm), tente novamente: ";
+            cout << "Data ou hora inválida (formato dd/mm/aaaa hh:mm), tente novamente: ";
             getline(cin, roteiro.dataHoraPrevista);
         }
     }
 
-    cout << "Informe a Duração Prevista (formato hh:mm): ";
+    cout << "Informe a duração prevista (formato hh:mm): ";
     cin >> roteiro.duracaoPrevista;
 
     while (true)
@@ -60,12 +60,12 @@ void criaRoteiro(vector<Roteiro> &roteiros)
         }
         else
         {
-            cout << "Duração inválida (hh:mm), tente novamente: ";
+            cout << "Duração inválida (formato hh:mm), tente novamente: ";
             cin >> roteiro.duracaoPrevista;
         }
     }
 
-    cout << "Informe a Origem: ";
+    cout << "Informe a origem: ";
     cin.ignore();
     getline(cin, roteiro.origem);
 
@@ -74,7 +74,7 @@ void criaRoteiro(vector<Roteiro> &roteiros)
 
     roteiros.push_back(roteiro);
 
-    cout << "Roteiro cadastrado com sucesso!" << endl;
+    cout << "\nRoteiro cadastrado com sucesso!" << endl;
 }
 
 void excluirRoteiro(vector<Roteiro> &roteiros)
@@ -101,24 +101,25 @@ void alteraRoteiro(vector<Roteiro> &roteiros)
     string codigo;
     char decisao;
 
-    cout << "\nDeseja alterar o Código? Se sim, pedimos para que insira os dados do roteiro novamente (s/n): ";
+    cout << "\nDeseja alterar o código? (S/N): ";
     cin >> decisao;
 
-    if (decisao == 's' || decisao == 'S')
-    {
+    if (decisao == 'S' || decisao == 's')
+    {   
+        cout << "\nSerá necessária a exclusão do cadastro anterior para a atualização dos dados.";
         excluirRoteiro(roteiros);
         criaRoteiro(roteiros);
         return;
     }
 
-    cout << "Informe o codigo do roteiro que terá os dados alterados: ";
+    cout << "Informe o código do roteiro que terá os dados alterados: ";
     cin >> codigo;
 
     for (Roteiro &it : roteiros)
     {
         if (it.codigo == codigo)
         {
-            cout << "Deseja modificar a data e hora prevista?? (s/n): ";
+            cout << "Deseja modificar a data e hora prevista? (s/n): ";
             cin >> decisao;
             cin.ignore();
 
@@ -128,12 +129,12 @@ void alteraRoteiro(vector<Roteiro> &roteiros)
                 cin >> it.dataHoraPrevista;
             }
 
-            cout << "Deseja modificar a duracao prevista? (s/n): ";
+            cout << "Deseja modificar a duração prevista? (s/n): ";
             cin >> decisao;
 
             if (decisao == 's' || decisao == 'S')
             {
-                cout << "Insira a nova duracao prevista: ";
+                cout << "Insira a nova duração prevista: ";
                 cin >> it.duracaoPrevista;
             }
 
@@ -142,18 +143,19 @@ void alteraRoteiro(vector<Roteiro> &roteiros)
             cin.ignore();
 
             if (decisao == 's' || decisao == 'S')
-            {
+            {   
+                cout << "\nSerá necessária a exclusão do cadastro anterior para a atualização dos dados.";
                 cout << "Insira a nova origem: ";
                 getline(cin, it.origem);
             }
 
-            cout << "Deseja modificar o destino? (s/n): ";
+            cout << "Deseja modificar o destino? (S/N): ";
             cin >> decisao;
             cin.ignore();
 
-            if (decisao == 's' || decisao == 'S')
-            {
-                cout << "Insira o novo desino: ";
+            if (decisao == 'S' || decisao == 's')
+            {   
+                cout << "Insira o novo destino: ";
                 getline(cin, it.destino);
             }
 
@@ -162,7 +164,7 @@ void alteraRoteiro(vector<Roteiro> &roteiros)
         }
     }
 
-    cout << "Roteiro nao encontrado." << endl;
+    cout << "Roteiro não encontrado!" << endl;
 }
 
 void listaRoteiro(vector<Roteiro> &roteiros)
@@ -175,7 +177,7 @@ void listaRoteiro(vector<Roteiro> &roteiros)
     cout << "\nLista de roteiros cadastrados:" << endl;
     for (Roteiro &it : roteiros)
     {
-        cout << "Codigo: " << it.codigo << ", Data Hora prevista: " << it.dataHoraPrevista << ", Duracao prevista: " << it.duracaoPrevista << ", Origem: " << it.origem << ", Destino: " << it.destino << endl;
+        cout << "Código: " << it.codigo << ", Data e hora prevista: " << it.dataHoraPrevista << ", Duração prevista: " << it.duracaoPrevista << ", Origem: " << it.origem << ", Destino: " << it.destino << endl;
     }
 }
 
@@ -195,12 +197,12 @@ void localizaRoteiro(vector<Roteiro> &roteiros)
         if (it.codigo == codigo)
         {
             cout << "\nRoteiro encontrado!" << endl;
-            cout << "Codigo: " << it.codigo << ", Data Hora prevista: " << it.dataHoraPrevista << ", Duracao prevista: " << it.duracaoPrevista << ", Origem: " << it.origem << ", Destino: " << it.destino << endl;
+            cout << "Codigo: " << it.codigo << ", Data hora prevista: " << it.dataHoraPrevista << ", Duração prevista: " << it.duracaoPrevista << ", Origem: " << it.origem << ", Destino: " << it.destino << endl;
             return;
         }
     }
 
-    cout << "\nRoteiro nao encontrado!" << endl;
+    cout << "\nRoteiro não encontrado!" << endl;
 }
 
 void menuRoteiro(vector<Roteiro> &roteiros){
@@ -209,11 +211,11 @@ void menuRoteiro(vector<Roteiro> &roteiros){
 
         cout << endl
         << "==== Gestão de Roteiros ==== " << endl <<"Serviços disponíveis:" << endl;
-        cout << "1. Incluir " << endl;
-        cout << "2. Excluir" << endl;
-        cout << "3. Alterar (apenas por código)" << endl;
-        cout << "4. Listar" << endl;
-        cout << "5. Localizar (apenas por código)" << endl;
+        cout << "1. Incluir roteiro" << endl;
+        cout << "2. Excluir roteiro" << endl;
+        cout << "3. Alterar roteiro (apenas por código)" << endl;
+        cout << "4. Listar roteiros" << endl;
+        cout << "5. Localizar roteiro (apenas por código)" << endl;
         cout << "0. Voltar ao Menu Principal" << endl;
         cout << "Escolha uma opção: ";
 
@@ -238,7 +240,7 @@ void menuRoteiro(vector<Roteiro> &roteiros){
                 localizaRoteiro(roteiros);
                 break;
             case 0:
-                cout << "Voltando ao Menu Principal" << endl;
+                cout << "Voltando ao menu principal" << endl;
                 return;
 
             default:
