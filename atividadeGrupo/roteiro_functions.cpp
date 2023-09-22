@@ -20,7 +20,7 @@ void criaRoteiro(vector<Roteiro> &roteiros)
     regex datahoraValida(R"((0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\d{4} (0[0-9]|1[0-9]|2[0-3]):[0-5][0-9])"),
         duracaoValida("([01]?[0-9]|2[0-3]):[0-5][0-9]");
 
-    cout << "Informe o Código do roteiro a ser cadastrado: ";
+    cout << "\nInforme o Código do roteiro a ser cadastrado: ";
     cin >> roteiro.codigo;
 
     for (Roteiro &it : roteiros)
@@ -80,7 +80,7 @@ void criaRoteiro(vector<Roteiro> &roteiros)
 void excluirRoteiro(vector<Roteiro> &roteiros)
 {
     string codigo;
-    cout << "Informe o código do roteiro a ser excluído: ";
+    cout << "\nInforme o código do roteiro a ser excluído: ";
     cin >> codigo;
 
     for (auto it = roteiros.begin(); it != roteiros.end(); ++it)
@@ -205,44 +205,46 @@ void localizaRoteiro(vector<Roteiro> &roteiros)
 
 void menuRoteiro(vector<Roteiro> &roteiros){
     
+    while(true){
 
-    cout << endl
-    << "==== Gestão de Roteiros ==== " << endl <<"Serviços disponíveis:" << endl;
-    cout << "1. Incluir " << endl;
-    cout << "2. Excluir" << endl;
-    cout << "3. Alterar (apenas por código)" << endl;
-    cout << "4. Listar" << endl;
-    cout << "5. Localizar (apenas por código)" << endl;
-    cout << "0. Voltar ao Menu Principal" << endl;
-    cout << "Escolha uma opção: ";
+        cout << endl
+        << "==== Gestão de Roteiros ==== " << endl <<"Serviços disponíveis:" << endl;
+        cout << "1. Incluir " << endl;
+        cout << "2. Excluir" << endl;
+        cout << "3. Alterar (apenas por código)" << endl;
+        cout << "4. Listar" << endl;
+        cout << "5. Localizar (apenas por código)" << endl;
+        cout << "0. Voltar ao Menu Principal" << endl;
+        cout << "Escolha uma opção: ";
 
-    int opcao;
-    cin >> opcao;
+        int opcao;
+        cin >> opcao;
 
-    switch (opcao){
+        switch (opcao){
 
-        case 1:
-            criaRoteiro(roteiros);
-            break;
-        case 2:
-            excluirRoteiro(roteiros);
-            break;
-        case 3:
-            alteraRoteiro(roteiros);
-            break;
-        case 4:
-            listaRoteiro(roteiros);
-            break;
-        case 5:
-            localizaRoteiro(roteiros);
-            break;
-        case 0:
-            cout << "Voltando ao Menu Principal" << endl;
-            return;
+            case 1:
+                criaRoteiro(roteiros);
+                break;
+            case 2:
+                excluirRoteiro(roteiros);
+                break;
+            case 3:
+                alteraRoteiro(roteiros);
+                break;
+            case 4:
+                listaRoteiro(roteiros);
+                break;
+            case 5:
+                localizaRoteiro(roteiros);
+                break;
+            case 0:
+                cout << "Voltando ao Menu Principal" << endl;
+                return;
 
-        default:
-            cout << "Informe um valor válido!" << endl;
-            break;
+            default:
+                cout << "Informe um valor válido!" << endl;
+                break;
+        }
     }
     
 }

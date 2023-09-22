@@ -2,8 +2,6 @@
 #include <vector>
 #include <string>
 #include <regex>
-#include "passageiro_functions.cpp"
-#include "roteiro_functions.cpp"
 
 struct Ocorrencia
 {
@@ -109,12 +107,12 @@ void criaEmbarque(vector<Embarque> &embarques, vector<Passageiro> &passageiros, 
 
     while (true)
     {
-        if (aconteceuEmbarque == 's')
+        if (aconteceuEmbarque == 's' || aconteceuEmbarque == 'S')
         {
             embarque.realizada = true;
             break;
         }
-        else if (aconteceuEmbarque == 'n')
+        else if (aconteceuEmbarque == 'n' || aconteceuEmbarque == 'N')
         {
             embarque.realizada = false;
             break;
@@ -129,8 +127,7 @@ void criaEmbarque(vector<Embarque> &embarques, vector<Passageiro> &passageiros, 
     embarques.push_back({passageiro, roteiro, embarque.data_Hora, embarque.duracao, embarque.realizada});
 }
 
-void excluirEmbarque(vector<Embarque> &embarques, vector<Passageiro> &passageiros, vector<Roteiro> &roteiros)
-{
+void excluirEmbarque(vector<Embarque> &embarques){
     Passageiro passageiro;
     Roteiro roteiro;
     Embarque embarque;
@@ -171,7 +168,7 @@ void excluirEmbarque(vector<Embarque> &embarques, vector<Passageiro> &passageiro
     cout << "\nPassageiro não encontrado!" << endl;
 }
 
-void alteraEmbarque(vector<Embarque> &embarques, vector<Passageiro> &passageiros, vector<Roteiro> &roteiros)
+void alteraEmbarque(vector<Embarque> &embarques)
 {
     string codigo, cpf;
 
@@ -242,42 +239,44 @@ void listaEmbarque(vector<Embarque> &embarques)
 
 void menuEmbarque(vector<Embarque> &embarques, vector<Passageiro> &passageiros, vector<Roteiro> &roteiros)
 {
+    while(true){
 
-    cout << endl
-         << "==== Gestão de Embarques ==== " << endl
-         << "Serviços disponíveis:" << endl;
-    cout << "1. Incluir " << endl;
-    cout << "2. Excluir" << endl;
-    cout << "3. Alterar (apenas por código de roteiro e CPF de passageiro)" << endl;
-    cout << "4. Listar" << endl;
-    cout << "0. Voltar ao Menu Principal" << endl;
-    cout << "Escolha uma opção: ";
+        cout << endl
+            << "==== Gestão de Embarques ==== " << endl
+            << "Serviços disponíveis:" << endl;
+        cout << "1. Incluir " << endl;
+        cout << "2. Excluir" << endl;
+        cout << "3. Alterar (apenas por código de roteiro e CPF de passageiro)" << endl;
+        cout << "4. Listar" << endl;
+        cout << "0. Voltar ao Menu Principal" << endl;
+        cout << "Escolha uma opção: ";
 
-    int opcao;
-    cin >> opcao;
+        int opcao;
+        cin >> opcao;
 
-    switch (opcao)
-    {
+        switch (opcao)
+        {
 
-    case 1:
-        criaEmbarque(embarques, passageiros, roteiros);
-        break;
-    case 2:
-        excluirEmbarque(embarques, passageiros, roteiros);
-        break;
-    case 3:
-        alteraEmbarque(embarques, passageiros, roteiros);
-        break;
-    case 4:
-        listaEmbarque(embarques);
-        break;
-    case 0:
-        cout << "Voltando ao Menu Principal" << endl;
-        return;
+        case 1:
+            criaEmbarque(embarques, passageiros, roteiros);
+            break;
+        case 2:
+            excluirEmbarque(embarques);
+            break;
+        case 3:
+            alteraEmbarque(embarques);
+            break;
+        case 4:
+            listaEmbarque(embarques);
+            break;
+        case 0:
+            cout << "Voltando ao Menu Principal" << endl;
+            return;
 
-    default:
-        cout << "Informe um valor válido!" << endl;
-        break;
+        default:
+            cout << "Informe um valor válido!" << endl;
+            break;
+        }
     }
 }
 
@@ -286,7 +285,7 @@ void criaOcorrencia(vector<Embarque> &embarques)
     regex datahoraValida(R"((0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\d{4} (0[0-9]|1[0-9]|2[0-3]):[0-5][0-9])");
     string codigo, cpf;
 
-    cout << "Informe o CPF do passageiro (xxx.xxx.xxx-xx): ";
+    cout << "\nInforme o CPF do passageiro (xxx.xxx.xxx-xx): ";
     cin >> cpf;
 
     cout << "Informe o codigo do roteiro: ";
@@ -301,19 +300,18 @@ void criaOcorrencia(vector<Embarque> &embarques)
             getline(cin, it.ocorrencia.descricao);
 
             cout << "Informe a Data e Hora real da ocorrência (formato dd/mm/aaaa hh:mm): ";
-            cin.ignore();
-            getline(cin, it.data_Hora);
+            getline(cin, it.ocorrencia.data_Hora);
 
             while (true)
             {
-                if (regex_match(it.data_Hora, datahoraValida))
+                if (regex_match(it.ocorrencia.data_Hora, datahoraValida))
                 {
                     break;
                 }
                 else
                 {
                     cout << "Data hora invalida (formato dd/mm/aaaa hh:mm), tente novamente: ";
-                    getline(cin, it.data_Hora);
+                    getline(cin, it.ocorrencia.data_Hora);
                 }
             }
 
@@ -332,7 +330,7 @@ void excluirOcorrencia(vector<Embarque> &embarques)
 {
     string codigo, cpf;
 
-    cout << "Informe o CPF do passageiro (xxx.xxx.xxx-xx): ";
+    cout << "n\Informe o CPF do passageiro (xxx.xxx.xxx-xx): ";
     cin >> cpf;
 
     cout << "Informe o codigo do roteiro: ";
@@ -359,7 +357,7 @@ void alteraOcorrencia(vector<Embarque> &embarques)
     string codigo, cpf;
     char decisao;
 
-    cout << "Informe o CPF do passageiro (xxx.xxx.xxx-xx): ";
+    cout << "\nInforme o CPF do passageiro (xxx.xxx.xxx-xx): ";
     cin >> cpf;
 
     cout << "Informe o codigo do roteiro: ";
@@ -423,7 +421,7 @@ void listaOcorrenciaPorPassageiro(vector<Embarque> &embarques)
 {
     string cpf;
 
-    cout << "Informe o CPF do passageiro (xxx.xxx.xxx-xx): ";
+    cout << "\nInforme o CPF do passageiro (xxx.xxx.xxx-xx): ";
     cin >> cpf;
 
     cout << "Ocorrencias desse CPF: " << endl;
@@ -445,7 +443,7 @@ void listaOcorrenciaPorRoteiro(vector<Embarque> &embarques)
 {
     string codigo;
 
-    cout << "Informe o codigo do roteiro: ";
+    cout << "\nInforme o codigo do roteiro: ";
     cin >> codigo;
 
     cout << "Ocorrencias desse codigo de roteiro: " << endl;
@@ -468,7 +466,7 @@ void registraOcorrenciaPorRoteiro(vector<Embarque> &embarques)
     regex datahoraValida(R"((0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\d{4} (0[0-9]|1[0-9]|2[0-3]):[0-5][0-9])");
     string codigo;
 
-    cout << "Informe o codigo do roteiro: ";
+    cout << "\nInforme o codigo do roteiro: ";
     cin >> codigo;
 
     for (Embarque &it : embarques)
@@ -508,45 +506,47 @@ void registraOcorrenciaPorRoteiro(vector<Embarque> &embarques)
 
 void menuOcorrencia(vector<Embarque> &embarques)
 {
+    while(true){
 
-    cout << endl
-         << "==== Gestão de Ocorrências ==== " << endl
-         << "Serviços disponíveis:" << endl;
-    cout << "1. Incluir " << endl;
-    cout << "2. Excluir" << endl;
-    cout << "3. Alterar (apenas por código de roteiro e CPF de passageiro)" << endl;
-    cout << "4. Listar por passageiro" << endl;
-    cout << "5. Listar por roteiro" << endl;
-    cout << "0. Voltar ao Menu Principal" << endl;
-    cout << "Escolha uma opção: ";
+        cout << endl
+            << "==== Gestão de Ocorrências ==== " << endl
+            << "Serviços disponíveis:" << endl;
+        cout << "1. Incluir " << endl;
+        cout << "2. Excluir" << endl;
+        cout << "3. Alterar (apenas por código de roteiro e CPF de passageiro)" << endl;
+        cout << "4. Listar por passageiro" << endl;
+        cout << "5. Listar por roteiro" << endl;
+        cout << "0. Voltar ao Menu Principal" << endl;
+        cout << "Escolha uma opção: ";
 
-    int opcao;
-    cin >> opcao;
+        int opcao;
+        cin >> opcao;
 
-    switch (opcao)
-    {
+        switch (opcao)
+        {
 
-    case 1:
-        criaOcorrencia(embarques);
-        break;
-    case 2:
-        excluirOcorrencia(embarques);
-        break;
-    case 3:
-        alteraOcorrencia(embarques);
-        break;
-    case 4:
-        listaOcorrenciaPorPassageiro(embarques);
-        break;
-    case 5:
-        listaOcorrenciaPorRoteiro(embarques);
-        break;
-    case 0:
-        cout << "Voltando ao Menu Principal" << endl;
-        return;
+        case 1:
+            criaOcorrencia(embarques);
+            break;
+        case 2:
+            excluirOcorrencia(embarques);
+            break;
+        case 3:
+            alteraOcorrencia(embarques);
+            break;
+        case 4:
+            listaOcorrenciaPorPassageiro(embarques);
+            break;
+        case 5:
+            listaOcorrenciaPorRoteiro(embarques);
+            break;
+        case 0:
+            cout << "Voltando ao Menu Principal..." << endl;
+            return;
 
-    default:
-        cout << "Informe um valor válido!" << endl;
-        break;
+        default:
+            cout << "Informe um valor válido!" << endl;
+            break;
+        }
     }
 }

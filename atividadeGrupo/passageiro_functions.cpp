@@ -51,7 +51,7 @@ void criaPassageiro(vector<Passageiro> &passageiros)
     regex cpfValido(R"(\d{3}\.\d{3}\.\d{3}-\d{2})"),
         dataValida("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$");
 
-    cout << "Informe o CPF do passageiro a ser cadastrado (xxx.xxx.xxx-xx): ";
+    cout << "\nInforme o CPF do passageiro a ser cadastrado (xxx.xxx.xxx-xx): ";
     cin >> passageiro.cpf;
 
     while (true)
@@ -80,7 +80,7 @@ void criaPassageiro(vector<Passageiro> &passageiros)
     cin.ignore();
     getline(cin, passageiro.nome);
 
-    cout << "Informe a data de nascimento do passageiro a ser incluído (da/mm/aaaa): ";
+    cout << "Informe a data de nascimento do passageiro a ser incluído (dd/mm/aaaa): ";
     cin >> passageiro.dataNascimento;
 
     while (true)
@@ -121,7 +121,7 @@ void criaPassageiro(vector<Passageiro> &passageiros)
 void excluirPassageiro(vector<Passageiro> &passageiros)
 {
     string cpf;
-    cout << "Informe o CPF do passageiro a ser excluído: ";
+    cout << "\nInforme o CPF do passageiro a ser excluído: ";
     cin >> cpf;
 
     for (auto it = passageiros.begin(); it != passageiros.end(); ++it)
@@ -276,41 +276,44 @@ void localizaPassageiro(vector<Passageiro> &passageiros)
 
 void menuPassageiro(vector<Passageiro> &passageiros)
 {
-    cout << endl
-         << "==== Gestão de passageiros ==== " << endl <<"Serviços disponíveis:" << endl;
-    cout << "1. Criar passageiro" << endl;
-    cout << "2. Excluir passageiro" << endl;
-    cout << "3. Alterar passageiro (por CPF)" << endl;
-    cout << "4. Listar passageiros" << endl;
-    cout << "5. Localizar passageiro (por CPF)" << endl;
-    cout << "0. Voltar ao Menu Principal" << endl;
-    cout << "Escolha uma opção: ";
+    while(true){
 
-    int opt;
-    cin >> opt;
+        cout << endl
+            << "==== Gestão de passageiros ==== " << endl <<"Serviços disponíveis:" << endl;
+        cout << "1. Criar passageiro" << endl;
+        cout << "2. Excluir passageiro" << endl;
+        cout << "3. Alterar passageiro (por CPF)" << endl;
+        cout << "4. Listar passageiros" << endl;
+        cout << "5. Localizar passageiro (por CPF)" << endl;
+        cout << "0. Voltar ao Menu Principal" << endl;
+        cout << "Escolha uma opção: ";
 
-    switch (opt)
-        {
-        case 1:
-            criaPassageiro(passageiros);
-            break;
-        case 2:
-            excluirPassageiro(passageiros);
-            break;
-        case 3:
-            alteraPassageiro(passageiros);
-            break;
-        case 4:
-            listaPassageiro(passageiros);
-            break;
-        case 5:
-            localizaPassageiro(passageiros);
-            break;
-        case 0:
-            cout << "Voltando ao Menu Principal" << endl;
-            return;
-        default:
-            cout << "Informe um valor válido!" << endl;
-        }
+        int opt;
+        cin >> opt;
+
+        switch (opt){
+
+            case 1:
+                criaPassageiro(passageiros);
+                break;
+            case 2:
+                excluirPassageiro(passageiros);
+                break;
+            case 3:
+                alteraPassageiro(passageiros);
+                break;
+            case 4:
+                listaPassageiro(passageiros);
+                break;
+            case 5:
+                localizaPassageiro(passageiros);
+                break;
+            case 0:
+                cout << "Voltando ao Menu Principal" << endl;
+                return;
+            default:
+                cout << "Informe um valor válido!" << endl;
+            }
+    }
 }
 

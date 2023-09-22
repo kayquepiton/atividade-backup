@@ -43,7 +43,7 @@ int main()
             break;
         case 0:
             cout << "Programa finalizado!" << endl;
-            return;
+            return 0;
         default:
             cout << "Informe um valor válido!" << endl;
             break;
