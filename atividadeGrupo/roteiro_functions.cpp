@@ -144,7 +144,6 @@ void alteraRoteiro(vector<Roteiro> &roteiros)
 
             if (decisao == 's' || decisao == 'S')
             {   
-                cout << "\nSerá necessária a exclusão do cadastro anterior para a atualização dos dados.";
                 cout << "Insira a nova origem: ";
                 getline(cin, it.origem);
             }
@@ -196,7 +195,7 @@ void localizaRoteiro(vector<Roteiro> &roteiros)
     {
         if (it.codigo == codigo)
         {
-            cout << "\nRoteiro encontrado!" << endl;
+            cout << "\nDados do roteiro solicitado:" << endl;
             cout << "Codigo: " << it.codigo << ", Data hora prevista: " << it.dataHoraPrevista << ", Duração prevista: " << it.duracaoPrevista << ", Origem: " << it.origem << ", Destino: " << it.destino << endl;
             return;
         }
