@@ -1,11 +1,7 @@
 #include <iostream>
-#include <vector>
-#include <string>
-#include <regex>
-#include <ctime>
-#include <sstream>
-#include "passageiro_functions.cpp" 
+#include "passageiro_functions.cpp"
 #include "roteiro_functions.cpp"
+#include "embarque_functions.cpp"
 
 using namespace std;
 
@@ -13,12 +9,13 @@ int main()
 {
     vector<Passageiro> listaPassageiros;
     vector<Roteiro> listaRoteiros;
-    
+    vector<Embarque> listaEmbarques;
 
     while (true)
     {
         cout << endl
-        << "==== Menu Principal ==== " << endl <<"Serviços disponíveis:" << endl;
+             << "==== Menu Principal ==== " << endl
+             << "Serviços disponíveis:" << endl;
         cout << "1. Gestão de Passageiros " << endl;
         cout << "2. Gestão de Roteiros" << endl;
         cout << "3. Gestão de Embarques" << endl;
@@ -28,7 +25,8 @@ int main()
         int opcao;
         cin >> opcao;
 
-        switch (opcao){
+        switch (opcao)
+        {
 
         case 1:
             menuPassageiro(listaPassageiros);
@@ -36,19 +34,19 @@ int main()
         case 2:
             menuRoteiro(listaRoteiros);
             break;
-        //case 3:
-            //menuEnbarque();
+        case 3:
+            menuEmbarque(listaEmbarques, listaPassageiros, listaRoteiros);
+            break;
+        case 4:
+            menuOcorrencia(listaEmbarques);
+            break;
         case 0:
             cout << "Programa finalizado!" << endl;
             return;
         default:
-            cout << "Digite um valor válido!" << endl;
+            cout << "Informe um valor válido!" << endl;
             break;
         }
-       
-
-        
-
     }
 
     return 0;

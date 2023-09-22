@@ -121,7 +121,7 @@ void criaPassageiro(vector<Passageiro> &passageiros)
 void excluirPassageiro(vector<Passageiro> &passageiros)
 {
     string cpf;
-    cout << "Digite o CPF do passageiro a ser excluído: ";
+    cout << "Informe o CPF do passageiro a ser excluído: ";
     cin >> cpf;
 
     for (auto it = passageiros.begin(); it != passageiros.end(); ++it)
@@ -152,7 +152,7 @@ void alteraPassageiro(vector<Passageiro> &passageiros)
         return;
     }
 
-    cout << "Digite o CPF do passageiro que terá os dados alterados: ";
+    cout << "Informe o CPF do passageiro que terá os dados alterados: ";
     cin >> cpf;
 
     for (Passageiro &it : passageiros)
@@ -250,7 +250,7 @@ void localizaPassageiro(vector<Passageiro> &passageiros)
     }
 
     string cpf;
-    cout << "\nDigite o CPF do passageiro a ser localizado: ";
+    cout << "\nInforme o CPF do passageiro a ser localizado: ";
     cin >> cpf;
 
     for (Passageiro &it : passageiros)
@@ -310,7 +310,7 @@ void menuPassageiro(vector<Passageiro> &passageiros)
             cout << "Voltando ao Menu Principal" << endl;
             return;
         default:
-            cout << "Digite um valor válido!" << endl;
+            cout << "Informe um valor válido!" << endl;
         }
 }
 

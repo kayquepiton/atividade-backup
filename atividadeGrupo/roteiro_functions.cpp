@@ -111,7 +111,7 @@ void alteraRoteiro(vector<Roteiro> &roteiros)
         return;
     }
 
-    cout << "Digite o codigo do roteiro que terá os dados alterados: ";
+    cout << "Informe o codigo do roteiro que terá os dados alterados: ";
     cin >> codigo;
 
     for (Roteiro &it : roteiros)
@@ -141,7 +141,7 @@ void alteraRoteiro(vector<Roteiro> &roteiros)
             cin >> decisao;
             cin.ignore();
 
-            if (decisao == 's')
+            if (decisao == 's' || decisao == 'S')
             {
                 cout << "Insira a nova origem: ";
                 getline(cin, it.origem);
@@ -151,7 +151,7 @@ void alteraRoteiro(vector<Roteiro> &roteiros)
             cin >> decisao;
             cin.ignore();
 
-            if (decisao == 's')
+            if (decisao == 's' || decisao == 'S')
             {
                 cout << "Insira o novo desino: ";
                 getline(cin, it.destino);
@@ -187,7 +187,7 @@ void localizaRoteiro(vector<Roteiro> &roteiros)
         return;
     }
     string codigo;
-    cout << "\nDigite o código do roteiro a ser localizado: ";
+    cout << "\nInforme o código do roteiro a ser localizado: ";
     cin >> codigo;
 
     for (Roteiro &it : roteiros)
@@ -241,7 +241,7 @@ void menuRoteiro(vector<Roteiro> &roteiros){
             return;
 
         default:
-            cout << "Digite um valor válido!" << endl;
+            cout << "Informe um valor válido!" << endl;
             break;
     }
     
