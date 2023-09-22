@@ -19,6 +19,7 @@ int main()
         cout << "1. Gestão de Passageiros " << endl;
         cout << "2. Gestão de Roteiros" << endl;
         cout << "3. Gestão de Embarques" << endl;
+        cout << "4. Gestão de Ocorrências" << endl;
         cout << "0. Sair." << endl;
         cout << "Escolha uma opção: ";
 
