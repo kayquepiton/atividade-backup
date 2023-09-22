@@ -51,7 +51,7 @@ void criaPassageiro(vector<Passageiro> &passageiros)
     regex cpfValido(R"(\d{3}\.\d{3}\.\d{3}-\d{2})"),
         dataValida("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$");
 
-    cout << "\nInforme o CPF do passageiro a ser cadastrado (xxx.xxx.xxx-xx): ";
+    cout << "\nInforme o CPF do passageiro a ser cadastrado (formato xxx.xxx.xxx-xx): ";
     cin >> passageiro.cpf;
 
     while (true)

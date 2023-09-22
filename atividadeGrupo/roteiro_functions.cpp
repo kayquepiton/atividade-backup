@@ -32,7 +32,7 @@ void criaRoteiro(vector<Roteiro> &roteiros)
         }
     }
 
-    cout << "Informe a data e hora prevista (formato dd/mm/aaaa hh:mm): ";
+    cout << "Informe a data e hora prevista (dd/mm/aaaa hh:mm): ";
     cin.ignore();
     getline(cin, roteiro.dataHoraPrevista);
 
@@ -44,12 +44,12 @@ void criaRoteiro(vector<Roteiro> &roteiros)
         }
         else
         {
-            cout << "Data ou hora inválida (formato dd/mm/aaaa hh:mm), tente novamente: ";
+            cout << "Data ou hora inválida (dd/mm/aaaa hh:mm), tente novamente: ";
             getline(cin, roteiro.dataHoraPrevista);
         }
     }
 
-    cout << "Informe a duração prevista (formato hh:mm): ";
+    cout << "Informe a duração prevista (hh:mm): ";
     cin >> roteiro.duracaoPrevista;
 
     while (true)
@@ -60,7 +60,7 @@ void criaRoteiro(vector<Roteiro> &roteiros)
         }
         else
         {
-            cout << "Duração inválida (formato hh:mm), tente novamente: ";
+            cout << "Duração inválida (hh:mm), tente novamente: ";
             cin >> roteiro.duracaoPrevista;
         }
     }
