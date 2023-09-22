@@ -104,12 +104,13 @@ void alteraRoteiro(vector<Roteiro> &roteiros)
     cout << "\nDeseja alterar o código? (S/N): ";
     cin >> decisao;
 
-    if (decisao == 'S' || decisao == 's')
-    {   
-        cout << "\nSerá necessária a exclusão do cadastro anterior para a atualização dos dados.";
-        excluirRoteiro(roteiros);
-        criaRoteiro(roteiros);
-        return;
+    for(Roteiro &it : roteiros) {
+        if(it.codigo == codigo && (decisao == 'S' ||decisao == 's')) {
+            cout << "\nSerá necessária a exclusão do cadastro anterior para a atualização dos dados.";
+            excluirRoteiro(roteiros);
+            criaRoteiro(roteiros);
+            return;
+        }
     }
 
     cout << "Informe o código do roteiro que terá os dados alterados: ";

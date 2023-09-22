@@ -145,12 +145,13 @@ void alteraPassageiro(vector<Passageiro> &passageiros)
     cout << "\nDeseja alterar o CPF? (S/N): ";
     cin >> decisao;
     
-    if (decisao == 'S' ||decisao == 's')
-    {
-        cout << "\nSerá necessária a exclusão do cadastro anterior para a atualização dos dados.";
-        excluirPassageiro(passageiros);
-        criaPassageiro(passageiros);
-        return;
+    for(Passageiro &it : passageiros) {
+        if(it.cpf == cpf && (decisao == 'S' ||decisao == 's')) {
+            cout << "\nSerá necessária a exclusão do cadastro anterior para a atualização dos dados.";
+            excluirPassageiro(passageiros);
+            criaPassageiro(passageiros);
+            return;
+        }
     }
 
     cout << "Informe o CPF do passageiro que terá os dados alterados: ";
