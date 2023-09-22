@@ -12,12 +12,12 @@ struct Ocorrencia
 
 struct Embarque
 {
-    Passageiro passageiro;
-    Roteiro roteiro;
-    string data_Hora;
-    string duracao;
-    bool realizada;
-    Ocorrencia ocorrencia;
+    Passageiro passageiro = {};
+    Roteiro roteiro = {};
+    string data_Hora = "";
+    string duracao = "";
+    bool realizada = false;
+    Ocorrencia ocorrencia = {};
 };
 
 void criaEmbarque(vector<Embarque> &embarques, vector<Passageiro> &passageiros, vector<Roteiro> &roteiros)
@@ -330,7 +330,7 @@ void excluirOcorrencia(vector<Embarque> &embarques)
 {
     string codigo, cpf;
 
-    cout << "n\Informe o CPF do passageiro (xxx.xxx.xxx-xx): ";
+    cout << "\nInforme o CPF do passageiro (xxx.xxx.xxx-xx): ";
     cin >> cpf;
 
     cout << "Informe o codigo do roteiro: ";
