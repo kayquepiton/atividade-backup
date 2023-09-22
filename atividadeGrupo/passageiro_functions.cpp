@@ -76,11 +76,11 @@ void criaPassageiro(vector<Passageiro> &passageiros)
         }
     }
 
-    cout << "Informe o nome do passageiro a ser incluído: ";
+    cout << "Informe o nome do passageiro a ser cadastrado: ";
     cin.ignore();
     getline(cin, passageiro.nome);
 
-    cout << "Informe a data de nascimento do passageiro a ser incluído (dd/mm/aaaa): ";
+    cout << "Informe a data de nascimento do passageiro a ser cadastrado (dd/mm/aaaa): ";
     cin >> passageiro.dataNascimento;
 
     while (true)
@@ -142,11 +142,12 @@ void alteraPassageiro(vector<Passageiro> &passageiros)
     string cpf;
     char decisao;
 
-    cout << "\nDeseja alterar o CPF? Se sim, pedimos para que insira os dados do passageiro novamente (S/N): ";
+    cout << "\nDeseja alterar o CPF? (S/N): ";
     cin >> decisao;
-
+    
     if (decisao == 'S' ||decisao == 's')
     {
+        cout << "\nSerá necessária a exclusão do cadastro anterior para a atualização dos dados.";
         excluirPassageiro(passageiros);
         criaPassageiro(passageiros);
         return;
